@@ -14,8 +14,9 @@
     />
     <link rel="stylesheet" type="text/css" media="screen" href="sudoku.css" />
   </head>
-  <body id="gamebody">
-    <h1 id="GameHead">Good Luck!</h1>
+  <body >
+    <div class="container">
+    <h1 class="col-12" id="GameHead">Good Luck!</h1>
 
     <table id="mytable">
       <tr>
@@ -119,7 +120,7 @@
       </tr>
     </table>
 
-    <div id="table-buttons">
+    <div id="table-buttons" class="col">
       <button type="button" class="btn btn-outline-primary" onclick="checkResults(table);">
       🏁 Finish
       </button>
@@ -136,10 +137,11 @@
         ✏️ Notes
       </button>
 
-      <button class="btn btn-outline-primary " onclick="window.location.href = 'levels.html';">🔙 Back</button>
+      <button class="btn btn-outline-primary " onclick="window.location.href= 'levels.html'">🔙 Back</button>
     </div>
 
     <p id="user-alert"></p>
+  </div>
 
     <audio id="success-audio">
       <source src="Ta-Da.mp3" type="audio/ogg">
@@ -168,6 +170,12 @@
           let audio2 = document.getElementById("fail-audio");           
           audio2.play();
         } 
+
+       
+     window.onbeforeunload = function(event){
+       event.returnValue = 'Are you sure you want to leave the page?'
+     }
+        
 
     </script>
   </body>

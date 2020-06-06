@@ -4,8 +4,8 @@ tr,
 td {
   border: 1px solid rgb(148, 147, 147);
   text-align: center;
-  height: 50px;
-  width: 50px;
+  height: 50px !important;
+  width: 50px !important;
 }
 
 table {
@@ -34,6 +34,10 @@ input::-webkit-inner-spin-button {
   margin: 0;
 }
 
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+
 #GameHead {
   margin: 15px;
   font-size: 55px;
@@ -49,7 +53,7 @@ input::-webkit-inner-spin-button {
 }
 
 #user-alert {
-  padding: 30px;
+  padding: 10px;
   font-size: 70px;
 }
 
