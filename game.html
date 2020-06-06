@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>Sudoko game table</title>
+    <link rel="shortcut icon" type="img/png" href="favicon.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+      integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" type="text/css" media="screen" href="sudoku.css" />
+  </head>
+  <body id="gamebody">
+    <h1 id="GameHead">Good Luck!</h1>
+
+    <table id="mytable">
+      <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+    </table>
+
+    <div id="table-buttons">
+      <button type="button" class="btn btn-outline-primary" onclick="checkResults(table);">
+      🏁 Finish
+      </button>
+
+      <button type="button" class="btn btn-outline-primary" onclick="window.location.reload();">
+      🙂 New game
+      </button>
+
+      <button type="button" class="btn btn-outline-primary" onclick="clearFields() " >
+      &#10060 Clear
+      </button>
+
+      <button class="btn btn-outline-primary " onclick="toggleNotes(event)">
+        ✏️ Notes
+      </button>
+
+      <button class="btn btn-outline-primary " onclick="window.location.href = 'levels.html';">🔙 Back</button>
+    </div>
+
+    <p id="user-alert"></p>
+
+    <audio id="success-audio">
+      <source src="Ta-Da.mp3" type="audio/ogg">
+    </audio>
+    <audio id="fail-audio">
+      <source src="Sad.mp3" type="audio/ogg">
+    </audio>
+
+    <script src="sudoku.js"></script>
+
+    <script>
+
+        
+    // creating variable that receives the paramaters from to the url and passes it to the functions
+      let lev = Number(urlParams.get("level")) || 20; 
+      putBlankCells(takeRandomMat(arrOfMats), lev);
+      getMatValues(table, arrOfMats[randomMat]);
+
+      function playAudio() { 
+        let audio = document.getElementById("success-audio");
+          audio.play();
+   
+        } 
+   
+      function playAudio2() { 
+          let audio2 = document.getElementById("fail-audio");           
+          audio2.play();
+        } 
+
+    </script>
+  </body>
+</html>

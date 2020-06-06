@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>Sudoku Levels</title>
+    <link rel="shortcut icon" type="img/png" href="favicon.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" type="text/css" media="screen" href="sudoku.css" />
+  </head>
+
+  <body id="levelBody">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-12">
+          <h1 id="levelsHeader">Choose level:</h1>
+        </div>
+      </div>
+
+      <div id="dlbuttons">
+        <button
+          type="submit"
+          class="btn btn-success lbuttons"
+          id="20"
+          onclick="saveLevel(event)"
+        >
+          easy
+        </button>
+
+        <button
+          type="submit"
+          class="btn btn-primary lbuttons"
+          id="40"
+          onclick="saveLevel(event)"
+        >
+          medium
+        </button>
+
+        <button
+          type="submit"
+          class="btn btn-danger lbuttons"
+          id="60"
+          onclick="saveLevel(event)"
+        >
+          hard
+        </button>
+      </div>
+    </div>
+    <script src="sudoku.js"></script>
+    <script>
+      function saveLevel(event) {
+        const btn = event.target;
+        window.location.href = "../Sudoku/game.html?level=" + btn.id; // adding id of the button( the target) to the URL
+      }
+    </script>
+  </body>
+</html>

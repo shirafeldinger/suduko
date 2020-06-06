@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>Welcome to our game!</title>
+    <link rel="shortcut icon" type="img/png" href="favicon.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" type="text/css" media="screen" href="sudoku.css" />
+  </head>
+  <body id="welcomeBody">
+    <h1 id="welcome-h1" class="col-12">
+      <span>Welcome to Tomer's & Shira's Sudoku Game!</span>
+    </h1>
+
+    <!-- using bootstrap to divid the rows to 3 so the input will be in the middle of the page -->
+    <div class="container">
+      <div class="row">
+        <div class="col-4"></div>
+        <input
+          class="col-4 form-control welcome-inputs"
+          type="text"
+          id="username"
+          placeholder="User name"
+        />
+        <div class="col-4"></div>
+      </div>
+
+      <div class="row">
+        <div class="col-4"></div>
+        <input
+          class="col-4 form-control welcome-inputs"
+          type="password"
+          id="password"
+          placeholder="Password"
+        />
+        <div class="col-4"></div>
+      </div>
+
+      <div class="row">
+        <div class="col"></div>
+        <p id="error" class="col alert alert-danger"></p>
+        <div class="col"></div>
+      </div>
+
+      <div id="welcome-buttons">
+        <button class="btn btn-primary wbuttons" onclick="CheckValid()">
+          Enter
+        </button>
+        <button
+          class="btn btn-primary wbuttons"
+          onclick="window.location.href= '../Sudoku/Register.html'"
+        >
+          Register
+        </button>
+      </div>
+    </div>
+    <script src="sudoku.js"></script>
+    <script>
+      let user = urlParams.get("user");
+      let password = urlParams.get("password");
+
+      function CheckValid() {
+        let inputuser = document.getElementById("username").value;
+        let inputpass = document.getElementById("password").value;
+
+        if (inputuser == user && inputpass == password) {
+          window.location.href = "levels.html";
+        } else {
+          document.getElementById("error").style.display = "block";
+          showError("error", "Invalid User name or password", "red");
+        }
+      }
+
+      function createh1() {
+        let headline = document.createElement("h1");
+        let span = document.createElement("span");
+        span.innerHTML = `Hello ${user || "guest"}`;
+        headline.appendChild(span);
+        document.body.insertBefore(headline, document.body.firstChild);
+        headline.style.textAlign = "center";
+        headline.style.color = "white";
+        headline.style.marginTop = "30px";
+        headline.style.fontSize = "50px";
+        span.style.backgroundColor = "rgb(180, 210, 219)";
+      }
+      createh1();
+    </script>
+  </body>
+</html>

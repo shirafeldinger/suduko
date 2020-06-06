@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>Register page</title>
+    <link rel="shortcut icon" type="img/png" href="favicon.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+      integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" type="text/css" media="screen" href="sudoku.css" />
+  </head>
+
+  <body id="registerbackground">
+    <div class="container">
+      <div class="row">
+        <div class="col-12">
+          <h1 id="h1register">Register to our game</h1>
+        </div>
+      </div>
+
+      <div class="row">
+        <label class="centering">Name</label>
+      </div>
+
+      <div class="row">
+        <input
+          class="centering registerinput form-control"
+          id="name"
+          placeholder="Enter your full name"
+          type="text"
+        />
+      </div>
+
+      <div class="row">
+        <div class="col"></div>
+        <p id="pname" class="col error-message"></p>
+        <div class="col"></div>
+      </div>
+
+      <div class="row">
+        <label class="centering">Username</label>
+      </div>
+      <div class="row">
+        <input
+          class="centering registerinput form-control"
+          id="username"
+          placeholder="Enter a username"
+          type="text"
+        />
+      </div>
+
+      <div class="row">
+        <div class="col"></div>
+        <p id="pusername" class="col error-message"></p>
+        <div class="col"></div>
+      </div>
+
+      <div class="row">
+        <label class="centering">Password</label>
+      </div>
+      <div class="row">
+        <input
+          class="centering registerinput form-control"
+          id="password"
+          placeholder="Enter your password"
+          type="password"
+        />
+      </div>
+
+      <div class="row">
+        <div class="col"></div>
+        <p id="ppassword" class="col error-message"></p>
+        <div class="col"></div>
+      </div>
+
+      <div class="row">
+        <label class="centering">Confirm Password</label>
+      </div>
+      <div class="row">
+        <input
+          class="centering registerinput form-control"
+          id="confirm"
+          placeholder="Enter password again"
+          type="password"
+        />
+      </div>
+
+      <div class="row">
+        <div class="col"></div>
+        <p id="pconfirm" class="col error-message"></p>
+        <div class="col"></div>
+      </div>
+
+      <div class="row">
+        <button
+          id="signup"
+          class="centering btn btn-primary"
+          onclick="checkRegister()"
+        >
+          Sign up
+        </button>
+      </div>
+    </div>
+    <script src="sudoku.js"></script>
+    <script>
+      function checkRegister() {
+        let name = document.getElementById("name").value;
+        let username = document.getElementById("username").value;
+        let password = document.getElementById("password").value;
+        let confirm = document.getElementById("confirm").value;
+        let counter = 0;
+
+        function checkName() {
+          if (name.length == 0) {
+            showError("pname", "Name should contain only letters");
+            return;
+          }
+          for (let i = 0; i < name.length; i++) {
+            if (
+              (name[i] >= "A" && name[i] <= "Z") ||
+              (name[i] >= "a" && name[i] <= "z") ||
+              name[i] == " "
+            ) {
+              showValid("pname", "valid name");
+            } else {
+              showError("pname", "Name should contain only letters");
+              return;
+            }
+          }
+          return counter++;
+        }
+        checkName();
+
+        function checkUserName() {
+          if (username.length == 0) {
+            showError("pusername", "at least 4 characters & small letter");
+            return;
+          }
+          for (let i = 0; i < username.length; i++) {
+            if (
+              username.length >= 4 &&
+              username[i] >= "a" &&
+              username[i] <= "z"
+            ) {
+              showValid("pusername", "valid username");
+            } else {
+              showError(
+                "pusername",
+                "at least 4 characters & only small letter"
+              );
+              return;
+            }
+          }
+          return counter++;
+        }
+        checkUserName();
+
+        function checkPassword() {
+          if (password.length == 0) {
+            showError("ppassword", "only numbers & minimum 4 digits");
+            return;
+          }
+          for (let i = 0; i < password.length; i++) {
+            if (password[i] >= 0 && password[i] <= 9 && password.length >= 4) {
+              showValid("ppassword", "valid password");
+            } else {
+              showError("ppassword", "only numbers & minimum 4 digits");
+              return;
+            }
+          }
+          return counter++;
+        }
+        checkPassword();
+
+        if (confirm != password) {
+          showError("pconfirm", "passwords doesn't match");
+          counter--;
+        }
+
+        if (counter == 3) {
+          alert("Your registration was successful! 😀");
+          window.location.href = `../Sudoku/welcome.html?user=${username}&password=${password}`;
+        }
+      }
+    </script>
+  </body>
+</html>
