@@ -4,8 +4,9 @@ tr,
 td {
   border: 1px solid rgb(148, 147, 147);
   text-align: center;
-  height: 50px !important;
-  width: 50px !important;
+  /* using relative height to adjust to viewport */
+  height: 7vh;
+  width: 7vh;
 }
 
 table {
@@ -33,7 +34,7 @@ input::-webkit-inner-spin-button {
   -webkit-appearance: none;
   margin: 0;
 }
-
+/* no spinner in input also in mozila  */
 input[type="number"] {
   -moz-appearance: textfield;
 }
@@ -45,16 +46,22 @@ input[type="number"] {
   animation: rubberband 2s 1;
 }
 
+/* removing scroll in the page in large viewport */
+@media (min-width: 485px) {
+  #gamebody {
+    overflow: hidden;
+  }
+}
+
 #table-buttons {
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-evenly;
-  margin-top: 30px;
-  padding: 10px;
+  margin-top: 25px;
 }
 
 #user-alert {
-  padding: 10px;
-  font-size: 70px;
+  font-size: 7vh;
 }
 
 .note {
@@ -118,6 +125,7 @@ input[type="number"] {
 }
 p {
   text-align: center;
+  margin: 0 auto;
 }
 
 #welcome-buttons {
